@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mkb-contracting
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: SITE_NAME
+        value: mkb-contracting.local
+      - key: ADMIN_EMAIL
+        value: admin@mkb.test
+      - key: ADMIN_PASSWORD
+        value: 9fibsakayt
+      - key: DB_ROOT_PASSWORD
+        generate:
+          length: 16
+      - key: REDIS_PASSWORD
+        generate:
+          length: 16
+      - key: TZ
+        value: Europe/Berlin
+    healthCheckPath: /
